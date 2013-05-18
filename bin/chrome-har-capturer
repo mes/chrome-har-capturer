@@ -31,6 +31,10 @@ var argv = require('optimist')
             'alias': 'm',
             'description': 'Dump raw messages instead of the generated HAR',
             'boolean': true
+        },
+        'tab': {
+            'alias': 't',
+            'description': 'Tab number to use'
         }
     })
     .argv;
@@ -38,7 +42,8 @@ var argv = require('optimist')
 var output = argv.output;
 var urls = argv._;
 var c = chc.load(urls, {'host': argv.host,
-                        'port': argv.port});
+                        'port': argv.port,
+                        'chooseTab': argv.tab ? function() { return argv.tab; } : null});
 
 chc.setVerbose(argv.verbose);
 
