@@ -35,6 +35,10 @@ var argv = require('optimist')
         'tab': {
             'alias': 't',
             'description': 'Tab number to use'
+        },
+        'id': {
+            'alias': 'i',
+            'description': 'ID (label) to set'
         }
     })
     .argv;
@@ -43,7 +47,8 @@ var output = argv.output;
 var urls = argv._;
 var c = chc.load(urls, {'host': argv.host,
                         'port': argv.port,
-                        'chooseTab': argv.tab ? function() { return argv.tab; } : null});
+                        'chooseTab': argv.tab ? function() { return argv.tab; } : null,
+                        'id': argv.id});
 
 chc.setVerbose(argv.verbose);
 
